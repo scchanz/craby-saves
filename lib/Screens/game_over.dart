@@ -1,52 +1,59 @@
 import 'package:flutter/material.dart';
-import 'menu_page.dart';
 import 'game_page.dart';
+import 'game_menu.dart';
 
 class GameOverPage extends StatelessWidget {
-  const GameOverPage({Key? key}) : super(key: key);
+  final int score;
+
+  const GameOverPage({super.key, required this.score});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.black87,
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Game Over',
-                style: TextStyle(
-                  fontSize: 48,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.redAccent,
-                ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "Belajar lagi ya dek",
+              style: TextStyle(
+                fontSize: 36,
+                color: Colors.redAccent,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () {
-                  // Mulai ulang game
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const GamePage()),
-                  );
-                },
-                child: const Text('Coba Lagi'),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  // Kembali ke menu utama
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MenuPage()),
-                  );
-                },
-                child: const Text('Kembali ke Menu'),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: 20),
+            Text(
+              "Skor Akhir: $score",
+              style: TextStyle(fontSize: 24, color: Colors.white),
+            ),
+            SizedBox(height: 30),
+            
+             
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => const GamePage()),
+                );
+              },
+              child: Text("Main Lagi"),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => const GameMenuPage()),
+                );
+              },
+              child: Text("Kembali ke Menu"),
+            ),
+          ],
         ),
       ),
     );

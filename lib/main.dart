@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'screens/menu_page.dart';
+import 'package:new_era/Screens/game_menu.dart';
 
 void main() {
-  runApp(const CrabGameApp());
+  runApp(const MyApp());
 }
 
-class CrabGameApp extends StatelessWidget {
-  const CrabGameApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Craby Saves',
+      title: 'Craby Egg Catcher',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const GameMenuPage(),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Arial',
-      ),
-      home: const MenuPage(),
     );
   }
 }
